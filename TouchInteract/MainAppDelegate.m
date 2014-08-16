@@ -7,6 +7,9 @@
 //
 
 #import "MainAppDelegate.h"
+#import "TouchDraw.h"
+#import "ICSDrawerController.h"
+#import "LeftController.h"
 
 @implementation MainAppDelegate
 
@@ -14,10 +17,16 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    TouchDraw * touchvc = [[TouchDraw alloc]init];
+   // UINavigationController * navgvc = [[UINavigationController alloc]initWithRootViewController:touchvc];
+    LeftController * leftview = [[LeftController alloc]init];
+    ICSDrawerController * drawer = [[ICSDrawerController alloc]initWithLeftViewController:leftview centerViewController:touchvc];
+    self.window.rootViewController = drawer;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
